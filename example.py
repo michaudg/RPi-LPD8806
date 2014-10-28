@@ -2,12 +2,12 @@
 
 from bootstrap import *
 
-#setup colors to loop through for fade
+# setup colors to loop through for fade
 colors = [
-	(255.0,0.0,0.0),
-	(0.0,255.0,0.0),
-	(0.0,0.0,255.0),
-	(255.0,255.0,255.0),
+	(255.0, 0.0, 0.0),
+	(0.0, 255.0, 0.0),
+	(0.0, 0.0, 255.0),
+	(255.0, 255.0, 255.0),
 ]
 
 step = 0.01
@@ -18,46 +18,46 @@ for c in range(4):
 	while level >= 0.0:
 		led.fill(Color(r, g, b, level))
 		led.update()
-		if(level >= 0.99):
+		if level >= 0.99:
 			dir = -step
 		level += dir
-		#sleep(0.005)
+	# sleep(0.005)
 
 led.all_off()
 
-#animations - each animation method moves the animation forward one step on each call
-#after each step, call update() to push it to the LED strip
-#sin wave animations
+# animations - each animation method moves the animation forward one step on each call
+# after each step, call update() to push it to the LED strip
+# sin wave animations
 anim = Wave(led, Color(255, 0, 0), 4)
 for i in range(led.lastIndex):
 	anim.step()
 	led.update()
-	#sleep(0.15)
+# sleep(0.15)
 
 anim = Wave(led, Color(0, 0, 100), 2)
 for i in range(led.lastIndex):
 	anim.step()
 	led.update()
-	#sleep(0.15)
+# sleep(0.15)
 
 
-#rolling rainbow
+# rolling rainbow
 anim = Rainbow(led)
 for i in range(384):
 	anim.step()
 	led.update()
 
-led.fillOff()
+led.fill_off()
 
-#evenly distributed rainbow
+# evenly distributed rainbow
 anim = RainbowCycle(led)
-for i in range(384*2):
+for i in range(384 * 2):
 	anim.step()
 	led.update()
 
-led.fillOff()
+led.fill_off()
 
-#setup colors for wipe and chase
+# setup colors for wipe and chase
 colors = [
 	Color(255, 0, 0),
 	Color(0, 255, 0),
@@ -71,9 +71,9 @@ for c in range(4):
 	for i in range(num):
 		anim.step()
 		led.update()
-		#sleep(0.03)
+	# sleep(0.03)
 
-led.fillOff()
+led.fill_off()
 
 for c in range(4):
 	anim = ColorChase(led, colors[c])
@@ -81,26 +81,23 @@ for c in range(4):
 	for i in range(num):
 		anim.step()
 		led.update()
-		#sleep(0.03)
+	# sleep(0.03)
 
-led.fillOff()
+led.fill_off()
 
-#scanner: single color and changing color
+# scanner: single color and changing color
 anim = LarsonScanner(led, Color(255, 0, 0))
-for i in range(led.lastIndex*4):
+for i in range(led.lastIndex * 4):
 	anim.step()
 	led.update()
-	#sleep(0.03)
+# sleep(0.03)
 
-led.fillOff()
+led.fill_off()
 
 anim = LarsonRainbow(led, 2, 0.5)
-for i in range(led.lastIndex*4):
+for i in range(led.lastIndex * 4):
 	anim.step()
 	led.update()
-	#sleep(0.03)
+# sleep(0.03)
 
 led.all_off()
-
-
-

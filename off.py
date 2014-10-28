@@ -3,5 +3,3 @@
 from bootstrap import *
 
 led.all_off()
-
-
